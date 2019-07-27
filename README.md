@@ -1,24 +1,49 @@
-# Routepy
+# docker-python-postgresql
+This is for building a development environment using Python and PostgreSQL.
+I do not guarantee security.
 
-## Goal
-PythonのフレームワークFlaskを使ってルーティングを行い、幾つかのページの表示とか404とか改めておさらいする。
+It is supposed to develop applications using Flask or Django.
 
+## env
+The operation has been confirmed below.
 
-## Other goals
-* テンプレートエンジンのjinja 2も使おう。
-* pep8で怒られながらもちゃんと書く。
+* macOS 10.14.6
+* Docker(Docker for mac): 18.09.2
+* docker-compose: 1.23.2
 
+## Usage
 
-## Env
-
-* Python 3.6.0
-
-
-## Example
+create project on project root.
+(For example, in the case of the Django project.)
 
 ```
-// Activate virtualenv and do this command.
-> pip install
-
-> python app.py
+├ docker/
+├ docker-compose.yml
+├ :
+├ django_app/
+├ manage.py
+└ requirements.txt
 ```
+
+Adjust bin / start.sh.
+
+```
+## django app
+python3 manage.py runserver 0.0.0.0:8000
+```
+
+Start Docker
+
+```
+# only first time.
+$ docker-compose up --build
+
+Use this after the second time.
+$ docker-compose start
+```
+
+Access the following in your browser:  
+http://0.0.0.0:8000
+
+## LISENCE
+MIT
