@@ -2,8 +2,9 @@ version: '3.1'
 
 services:
     web:
-        build: .
-        command: bash -c "sh ./bin/start-django-server.sh"
+        build: docker/python
+        command: >
+            sh bin/start.sh
         volumes:
             - .:/code
         ports:
@@ -13,8 +14,13 @@ services:
     db:
         image: postgres:10
         environment:
-            POSTGRES_DB: "DATABASE_NAME"
+            POSTGRES_DB: "postgres"
             POSTGRES_USER: "postgres"
             POSTGRES_PASSWORD: "postgres"
+        ports:
+            - "5432:5432"
         volumes:
             - ~/docker/postgres:/var/lib/postgresql/data
+
+volumes:
+    dbdata:
