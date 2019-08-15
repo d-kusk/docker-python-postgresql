@@ -25,14 +25,24 @@ create project on project root.
 └ requirements.txt
 ```
 
-Adjust bin / start.sh.
+### Adjust bin/start.sh
 
 ```
 ## django app
 python3 manage.py runserver 0.0.0.0:8000
 ```
 
-Start Docker
+### set environment variables
+
+set variables to .env
+
+```
+POSTGRES_DB="postgres"
+POSTGRES_USER="postgres"
+POSTGRES_PASSWORD="postgres"
+```
+
+### Start Docker
 
 ```
 # only first time.
